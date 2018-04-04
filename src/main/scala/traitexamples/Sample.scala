@@ -1,27 +1,21 @@
 package traitexamples
 
-trait Friend {
-  val name: String
-  def listen() = println("Your friend " + name + " is listening")
+trait Animal{
+  def speak: Unit
 }
 
-class Human(val name: String) extends Friend
+class Dog(val name: String) extends Animal{
+  override def speak: Unit = println(s"$name is barking")
+}
 
-class Man(override val name: String) extends Human(name)
-
-class Woman(override val name: String) extends Human(name)
-
-class Animal
-
-class Dog(val name: String) extends Animal with Friend
+class Cat(val name: String) extends Animal{
+  override def speak: Unit = println(s"$name is meowing")
+}
 
 object Sample extends App{
+  val jackey = new Dog("Jackey")
+  val kity = new Cat(("Kity"))
 
-  val mahesh = new Man("mahesh")
-  val divya = new Woman("divya")
-  val jackey = new Dog("jackey")
-
-  mahesh.listen
-  divya.listen
-  jackey.listen
+  jackey.speak
+  kity.speak
 }
